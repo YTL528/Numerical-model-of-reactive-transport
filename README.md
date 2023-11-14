@@ -12,6 +12,7 @@ This project will be based on the following key equations:
 $$
 \theta \frac{\partial C}{\partial t}=\theta D_{x} \frac{\partial^2 C}{\partial x^2}-q_{x}\frac{\partial C}{\partial x} - kC
 $$
+
 where,
 C - solute concentration
 $\theta$ - effective porosity
@@ -25,6 +26,7 @@ k - reaction rate coefficient
 $$
 \theta \frac{C^{n}_{i}-C^{n-1}_{i}}{\Delta t} = D_{x} \frac{C^{n}_{i+1}-2C^{n}_{i}+C^{n}_{i+1}+C^{n-1}_{i+1}-2C^{n-1}_{i}+C^{n-1}_{i+1}}{2 \Delta x^2} - q_{x}\frac{C^{n}_{i+1}-C^{n}_{i-1}+C^{n-1}_{i+1}-C^{n-1}_{i-1}}{4 \Delta x} - \frac{k}{2}(C^{n}_{i}+C^{n-1}_{i})
 $$
+
 where,
 n - change in time
 i - change in space
@@ -35,18 +37,23 @@ i - change in space
 
 This project is implemented in Python with added tests and CI.
 * `src/_.py`:
+
 Python codes to implement the Crank-Nicolson method to solve the partial differential advection-diffusion equation.
 
 * `tests/`:
+
 Tests to verify that the written PDE solver works.
 
 * `pyproject.toml`:
+
 This file contains configuration settings for the build system, project metadata (name, version, dependencies), and tool specifications for linting and formatting using tools like Flake8, isort, Ruff, and pyupgrade.
 
 * `.pre-commit-config.yaml`:
+
 Defines a list of Git hooks using the pre-commit framework. It sets up hooks for checking and fixing trailing whitespace, using Ruff-specific checks, and applying Black code formatting.
 
 * `noxfile.py`:
+
 Contains Python code defining sessions for the Nox automation tool. In this case, it sets up a session named tests to install test dependencies and run the pytest test suite.
 
 * `.github/workflow/ci.yml`:
