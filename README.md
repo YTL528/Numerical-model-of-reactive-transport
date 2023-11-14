@@ -1,7 +1,7 @@
 # Numerical-model-of-reactive-transport
 **Objective**
 
-In environmental engineering, there is a need to characterize contaminant transport in groundwater over space and time. Crank-Nicolson is a second-order finite difference method of solving partial differential equations, which can be applied to advection-diffusion equations to model movement and change in concentration of a contaminant. This can be used to determine the rate of travel of contaminants, as well as the concentration at a specific location over time. The objective of this project is to create a numerical model of reactive transport using the Crank-Nicolson method applied to advection-diffusion equations and compare the results with analytical solutions and (potentially) other numerical methods. 
+In environmental engineering, there is a need to characterize contaminant transport in groundwater over space and time. Crank-Nicolson is a second-order finite difference method of solving partial differential equations, which can be applied to advection-diffusion equations to model movement and change in concentration of a contaminant. This can be used to determine the rate of travel of contaminants, as well as the concentration at a specific location over time. The objective of this project is to create a numerical model of reactive transport using the Crank-Nicolson method applied to advection-diffusion equations and compare the results with analytical solutions and (potentially) other numerical methods.
 
 **Methodology**
 
@@ -12,7 +12,7 @@ This project will be based on the following key equations:
 $$
 \theta \frac{\partial C}{\partial t}=\theta D_{x} \frac{\partial^2 C}{\partial x^2}-q_{x}\frac{\partial C}{\partial x} - kC
 $$
-where, 
+where,
 C - solute concentration
 $\theta$ - effective porosity
 $D_{x}$ - dispersive coefficient
@@ -26,14 +26,14 @@ $$
 \theta \frac{C^{n}_{i}-C^{n-1}_{i}}{\Delta t} = D_{x} \frac{C^{n}_{i+1}-2C^{n}_{i}+C^{n}_{i+1}+C^{n-1}_{i+1}-2C^{n-1}_{i}+C^{n-1}_{i+1}}{2 \Delta x^2} - q_{x}\frac{C^{n}_{i+1}-C^{n}_{i-1}+C^{n-1}_{i+1}-C^{n-1}_{i-1}}{4 \Delta x} - \frac{k}{2}(C^{n}_{i}+C^{n-1}_{i})
 $$
 where,
-n - change in time 
+n - change in time
 i - change in space
 
 [both equations modified from Numerical modeling of contaminant transformation in a permeable reactive barrier, A.Rahman and Anurag 2021. https://link.springer.com/chapter/10.1007/978-981-16-5547-0_43]
 
 **Implementation**
 
-This project is implemented in Python with added tests and CI. 
+This project is implemented in Python with added tests and CI.
 * `src/_.py`:
 Python codes to implement the Crank-Nicolson method to solve the partial differential advection-diffusion equation.
 
