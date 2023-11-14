@@ -14,10 +14,10 @@ $$
 $$  
 
 where,
-C - solute concentration
-$\theta$ - effective porosity
-$D_{x}$ - dispersive coefficient
-$q_{x}$ - darcy velocity (q_x=v_x θ, where v_x is average groundwater velocity)
+C - solute concentration  
+$\theta$ - effective porosity  
+$D_{x}$ - dispersive coefficient  
+$q_{x}$ - darcy velocity (q_x=v_x θ, where v_x is average groundwater velocity)  
 k - reaction rate coefficient
 
 2) Crank-Nicolson method
@@ -28,7 +28,7 @@ $$
 $$  
 
 where,
-n - change in time
+n - change in time  
 i - change in space
 
 [both equations modified from Numerical modeling of contaminant transformation in a permeable reactive barrier, A.Rahman and Anurag 2021. https://link.springer.com/chapter/10.1007/978-981-16-5547-0_43]
