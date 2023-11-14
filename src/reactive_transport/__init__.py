@@ -7,5 +7,5 @@ def simple_transport(grad, D, v, grad_c):
          v (float): Velocity of groundwater
          grad_c (float): Slope of concentration gradient
     """
-    dc_dt = D * grad ** 2 - v * grad_c
+    dc_dt = D * grad**2 - v * grad_c
     return dc_dt
