@@ -11,7 +11,7 @@ This project will be based on the following key equations:
 
 $$
 \theta \frac{\partial C}{\partial t}=\theta D_{x} \frac{\partial^2 C}{\partial x^2}-q_{x}\frac{\partial C}{\partial x} - kC
-$$
+$$  
 
 where,
 C - solute concentration
@@ -25,7 +25,7 @@ k - reaction rate coefficient
 
 $$
 \theta \frac{C^{n}_{i}-C^{n-1}_{i}}{\Delta t} = D_{x} \frac{C^{n}_{i+1}-2C^{n}_{i}+C^{n}_{i+1}+C^{n-1}_{i+1}-2C^{n-1}_{i}+C^{n-1}_{i+1}}{2 \Delta x^2} - q_{x}\frac{C^{n}_{i+1}-C^{n}_{i-1}+C^{n-1}_{i+1}-C^{n-1}_{i-1}}{4 \Delta x} - \frac{k}{2}(C^{n}_{i}+C^{n-1}_{i})
-$$
+$$  
 
 where,
 n - change in time
