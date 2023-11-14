@@ -24,8 +24,8 @@ k - reaction rate coefficient
    [https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method]
 
 $$
-\theta \frac{C^{n}_{i}-C^{n-1}_{i}}{\Delta t} = D_{x} \frac{C^{n}_{i+1}-2C^{n}_{i}+C^{n}_{i+1}+C^{n-1}_{i+1}-2C^{n-1}_{i}+C^{n-1}_{i+1}}{2 \Delta x^2} - q_{x}\frac{C^{n}_{i+1}-C^{n}_{i-1}+C^{n-1}_{i+1}-C^{n-1}_{i-1}}{4 \Delta x} - \frac{k}{2}(C^{n}_{i}+C^{n-1}_{i})
-$$  
+\theta \frac{C_{i}^{n} - C_{i}^{n-1}}{\Delta t} = D_{x} \frac{C_{i+1}^{n} - 2 C_{i}^{n} + C_{i-1}^{n} + C_{i+1}^{n-1} - 2 C_{i}^{n-1} + C_{i-1}^{n-1}}{2 \Delta x^2} - q_{x} \frac{C_{i+1}^{n} - C_{i-1}^{n} + C_{i+1}^{n-1} - C_{i-1}^{n-1}}{4 \Delta x} - \frac{k}{2}(C_{i}^{n} + C_{i}^{n-1})
+$$   
 
 where,
 n - change in time  
@@ -57,5 +57,6 @@ Defines a list of Git hooks using the pre-commit framework. It sets up hooks for
 Contains Python code defining sessions for the Nox automation tool. In this case, it sets up a session named tests to install test dependencies and run the pytest test suite.
 
 * `.github/workflow/ci.yml`:
+
 Defines the continuous integration (CI) workflow using GitHub Actions. It has two jobs: formats and tests. The formats job checks for code formatting issues using pre-commit, and the tests job runs tests using different Python versions specified in a matrix.
 
