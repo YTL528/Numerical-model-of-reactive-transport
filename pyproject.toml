@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "PLACEHOLDER"
+name = "reactive_transport"
 version = "0.1.0"
 classifiers = [
   "Private :: Do Not Upload",

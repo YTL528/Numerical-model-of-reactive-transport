@@ -1,4 +1,4 @@
-name: PLACEHOLDER
+name: reactive_transport
 
 on:
   pull_request:
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.12"]
+        python-version: ["3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
