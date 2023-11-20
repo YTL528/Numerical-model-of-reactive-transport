@@ -9,7 +9,6 @@ def test_zeros():
     assert simple_transport(0, 0, 0, 0) == 0
 
 
-def test_conpare():
 def test_compare():
     assert abs(simple_transport(0.25, 1, 1, 0.25)) > abs(simple_transport(0.5, 1, 1, 0.25))
     
