@@ -10,7 +10,9 @@ def test_zeros():
 
 
 def test_compare():
-    assert abs(simple_transport(0.25, 1, 1, 0.25)) > abs(simple_transport(0.5, 1, 1, 0.25))
+    assert abs(simple_transport(0.25, 1, 1, 0.25)) > abs(
+        simple_transport(0.5, 1, 1, 0.25)
+    )
     
     
 def test_boundary_conditions():
