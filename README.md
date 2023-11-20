@@ -59,4 +59,3 @@ Contains Python code defining sessions for the Nox automation tool. In this case
 * `.github/workflow/ci.yml`:
 
 Defines the continuous integration (CI) workflow using GitHub Actions. It has two jobs: formats and tests. The formats job checks for code formatting issues using pre-commit, and the tests job runs tests using different Python versions specified in a matrix.
-
