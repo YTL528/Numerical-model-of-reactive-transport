@@ -21,3 +21,4 @@ def test_boundary_conditions():
 
 def test_negative_inputs():
     assert simple_transport(-0.25, 1, -1, -0.25) == -0.1875
+    
