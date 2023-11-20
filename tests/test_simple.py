@@ -11,3 +11,9 @@ def test_zeros():
 
 def test_conpare():
     assert simple_transport(0.25, 1, 1, 0.25) > simple_transport(0.5, 1, 1, 0.25)
+    
+def test_boundary_conditions():
+    assert simple_transport(1000, 1e-6, 10, 100) == -999
+
+def test_negative_inputs():
+    assert simple_transport(-0.25, 1, -1, -0.25) == 0.3125
