@@ -16,6 +16,9 @@ test = [
   "uncertainties",
 ]
 
+[tool.black]
+line-lenght = 80
+
 [tool.ruff]
 select = [
   "E", "F", "W", # flake8
@@ -24,3 +27,6 @@ select = [
   "RUF",         # Ruff-specific
   "UP",          # pyupgrade
 ]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
