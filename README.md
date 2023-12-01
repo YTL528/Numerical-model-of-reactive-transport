@@ -1,4 +1,11 @@
 # Numerical-model-of-reactive-transport
+**To-dolist (before Dec 8)**
+
+1. Fix the bugs in Crank-Nicolson.ipynb.
+2. Make three .ipynb files into functions and move them into src/.
+3. Add tests.
+
+
 **Objective**
 
 In environmental engineering, there is a need to characterize contaminant transport in groundwater over space and time. Crank-Nicolson is a second-order finite difference method of solving partial differential equations, which can be applied to advection-diffusion equations to model movement and change in concentration of a contaminant. This can be used to determine the rate of travel of contaminants, as well as the concentration at a specific location over time. The objective of this project is to create a numerical model of reactive transport using the Crank-Nicolson method applied to advection-diffusion equations and compare the results with analytical solutions and (potentially) other numerical methods.
@@ -17,7 +24,7 @@ where,
 C - solute concentration
 $\theta$ - effective porosity
 $D_{x}$ - dispersive coefficient
-$q_{x}$ - darcy velocity (q_x=v_x θ, where v_x is average groundwater velocity)
+$q_{x}$ - darcy velocity ($q_x=v_x \theta$, where $v_x$ is average groundwater velocity)
 k - reaction rate coefficient
 
 2) Crank-Nicolson method
@@ -28,7 +35,7 @@ $$
 $$
 
 where,
-n - change in time
+n - change in time  
 i - change in space
 
 [both equations modified from Numerical modeling of contaminant transformation in a permeable reactive barrier, A.Rahman and Anurag 2021. https://link.springer.com/chapter/10.1007/978-981-16-5547-0_43]
@@ -59,3 +66,15 @@ Contains Python code defining sessions for the Nox automation tool. In this case
 * `.github/workflow/ci.yml`:
 
 Defines the continuous integration (CI) workflow using GitHub Actions. It has two jobs: formats and tests. The formats job checks for code formatting issues using pre-commit, and the tests job runs tests using different Python versions specified in a matrix.
+
+* `Analytical Solution.ipynb`:
+
+The analytical solution for the Advection-diffusion equation coded in Python, which helps to get accurate results.
+
+* `Forward Difference Code.ipynb`:
+
+The Forward Difference method used for solving the Advection-diffusion equation and coded in Python.
+
+* `Crank-Nicolson.ipynb`:
+
+The Crank-Nicolson method used for solving the Advection-diffusion equation and coded in Python.
