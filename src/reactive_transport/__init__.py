@@ -1,8 +1,3 @@
-import math
-
-import numpy as np
-
-
 def simple_transport(grad, D, v, grad_c):
     """
     Simple 1D change in concentration over time for one time step at one location.
