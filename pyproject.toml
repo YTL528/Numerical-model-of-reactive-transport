@@ -15,7 +15,6 @@ test = [
   "pytest",
   "uncertainties",
   "numpy",
-  "math",
 ]
 
 [tool.black]
