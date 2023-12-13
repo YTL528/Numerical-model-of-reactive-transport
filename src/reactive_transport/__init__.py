@@ -24,9 +24,9 @@ def Crank_Nicolson(L, DX, Tmax, por, DT, Cf, Cb, q, DH):
     """
     N = int(L / DX) + 1  # needs to be changed to match Forward Difference formatting
 
-    node_locations = np.arange(0, L + DX, DX)
+    # node_locations = np.arange(0, L + DX, DX)
     number_timesteps = int(Tmax / DT)
-    time_increments = np.arange(DT, Tmax + DT, DT)
+    # time_increments = np.arange(DT, Tmax + DT, DT)
     Cnew = np.zeros([N, number_timesteps])
 
     # set coefficients in in FD equations
@@ -75,7 +75,7 @@ def Analytical(L, DX, Tmax, por, DT, Cf, Cb, q, DH):
     v = q / por
     D = DH / por
 
-    node_locations = np.arange(0, L + DX, DX)
+    # node_locations = np.arange(0, L + DX, DX)
 
     Cnew_analytic = np.zeros(N)
 
@@ -91,14 +91,14 @@ def Analytical(L, DX, Tmax, por, DT, Cf, Cb, q, DH):
                 * math.erfc((x + v * DT) / (2 * math.sqrt(D * DT)))
             )
         )
-    return Cnew_analytical
+    return Cnew_analytic
 
 
 def Forward_Difference(L, DX, Tmax, por, DT, Cf, Cb, q, DH):
     number_nodes = int(L / DX)
-    node_locations = np.arange(0, L + DX, DX)
+    # node_locations = np.arange(0, L + DX, DX)
     number_timesteps = int(Tmax / DT)
-    time_increments = np.arange(DT, Tmax + DT, DT)
+    # time_increments = np.arange(DT, Tmax + DT, DT)
     Cnew = np.zeros([number_nodes, number_timesteps])
 
     # set coefficients in in FD equations
