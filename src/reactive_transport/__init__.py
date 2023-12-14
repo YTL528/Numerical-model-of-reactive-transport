@@ -2,6 +2,7 @@ import math
 
 import numpy as np
 
+from numpy.typing import NDArray
 
 def simple_transport(grad, D, v, grad_c):
     """
