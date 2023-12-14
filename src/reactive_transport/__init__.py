@@ -2,6 +2,7 @@ import math
 
 import numpy as np
 
+from numpy.typing import NDArray
 
 def simple_transport(grad, D, v, grad_c):
     """
@@ -16,36 +17,47 @@ def simple_transport(grad, D, v, grad_c):
     return dc_dt
 
 
-def Crank_Nicolson(L, DX, Tmax, por, DT, Cf, Cb, q, DH):
+def Crank_Nicolson(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> NDArray[np.float64]:
     """
-    Documentation needed
-     Inputs:
-
+    Computes the numerical solution using the Crank-Nicolson method for reactive transport.
+    
+    Inputs:
+    - L (float): Length of the domain
+    - DX (float): Spatial step size
+    - Tmax (float): Maximum simulation time
+    - por (float): Porosity
+    - DT (float): Time step size
+    - Cf (float): Concentration at the front boundary
+    - Cb (float): Concentration at the back boundary
+    - q (float): Flow rate
+    - DH (float): Dispersion coefficient
+    
+    Returns:
+    - NDArray[np.float64]: Concentration profile across the domain at different locations
     """
     N = int(L / DX) + 1  # needs to be changed to match Forward Difference formatting
-
-    # node_locations = np.arange(0, L + DX, DX)
+    
+    
     number_timesteps = int(Tmax / DT)
-    # time_increments = np.arange(DT, Tmax + DT, DT)
-    Cnew = np.zeros([N, number_timesteps])
-
+    Cnew = np.zeros([N, number_timesteps], dtype=np.float64)
+    
+    
     # set coefficients in in FD equations
-    # D = DH / por
     p = (DH * DT) / (DX**2)
     r = (q * DT) / (2 * DX)
-
+    
     a = p - r
     b = 2 * por + 2 * p
     c = p + r
-
+    
     for i in range(number_timesteps):
         Cnew[0, i] = Cf  # Boundary condition on the left
         Cnew[50, i] = Cb  # Boundary condition on the right
-
-        D = np.zeros(N + 1)
-        E = np.zeros(N + 1)
-        F = np.zeros(N + 1)
-
+    
+        D = np.zeros(N + 1, dtype=np.float64)
+        E = np.zeros(N + 1, dtype=np.float64)
+        F = np.zeros(N + 1, dtype=np.float64)
+    
         for k in range(1, N - 1):
             if k == 1:
                 D[k] = (
@@ -63,21 +75,36 @@ def Crank_Nicolson(L, DX, Tmax, por, DT, Cf, Cb, q, DH):
                 )
                 E[k] = a / (b - c * E[k - 1])
                 F[k] = (D[k] + c * F[k - 1]) / (b - c * E[k - 1])
-
+    
         for k in range(N - 2, 0, -1):
             Cnew[k, i] = F[k] + E[k] * Cnew[k + 1, i]
     return Cnew
 
 
-def Analytical(L, DX, Tmax, por, DT, Cf, Cb, q, DH):
+def Analytical(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> NDArray[np.float64]:
+    """
+    Computes the analytical solution for reactive transport.
+
+    Inputs:
+    - L (float): Length of the domain
+    - DX (float): Spatial step size
+    - Tmax (float): Maximum simulation time
+    - por (float): Porosity
+    - DT (float): Time step size
+    - Cf (float): Concentration at the front boundary
+    - Cb (float): Concentration at the back boundary
+    - q (float): Flow rate
+    - DH (float): Dispersion coefficient
+
+    Returns:
+    - NDArray[np.float64]: Concentration profile across the domain at different locations
+    """
     N = int(L / DX) + 1
 
     v = q / por
     D = DH / por
 
-    # node_locations = np.arange(0, L + DX, DX)
-
-    Cnew_analytic = np.zeros(N)
+    Cnew_analytic = np.zeros(N, dtype=np.float64)
 
     Cnew_analytic[0] = Cf
     Cnew_analytic[50] = Cb
@@ -94,12 +121,29 @@ def Analytical(L, DX, Tmax, por, DT, Cf, Cb, q, DH):
     return Cnew_analytic
 
 
-def Forward_Difference(L, DX, Tmax, por, DT, Cf, Cb, q, DH):
+
+def Forward_Difference(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> NDArray[np.float64]:
+    """
+    Computes the numerical solution using the Forward Difference method for reactive transport.
+
+    Inputs:
+    - L (float): Length of the domain
+    - DX (float): Spatial step size
+    - Tmax (float): Maximum simulation time
+    - por (float): Porosity
+    - DT (float): Time step size
+    - Cf (float): Concentration at the front boundary
+    - Cb (float): Concentration at the back boundary
+    - q (float): Flow rate
+    - DH (float): Dispersion coefficient
+
+    Returns:
+    - NDArray[np.float64]: Concentration profile across the domain at different locations
+    """
     number_nodes = int(L / DX)
-    # node_locations = np.arange(0, L + DX, DX)
     number_timesteps = int(Tmax / DT)
-    # time_increments = np.arange(DT, Tmax + DT, DT)
-    Cnew = np.zeros([number_nodes, number_timesteps])
+    Cnew = np.zeros([number_nodes, number_timesteps], dtype=np.float64)
+
 
     # set coefficients in in FD equations
     D = DH / por
