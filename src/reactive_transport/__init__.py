@@ -36,8 +36,10 @@ def Crank_Nicolson(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: 
     """
     N = int(L / DX) + 1  # needs to be changed to match Forward Difference formatting
 
+
     number_timesteps = int(Tmax / DT)
     Cnew = np.zeros([N, number_timesteps], dtype=np.float64)
+
 
     # set coefficients in in FD equations
     p = (DH * DT) / (DX**2)
@@ -118,6 +120,7 @@ def Analytical(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: floa
     return Cnew_analytic
 
 
+
 def Forward_Difference(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> ndarray[np.float64]:
      """
     Computes the numerical solution using the Forward Difference method for reactive transport.
@@ -139,6 +142,7 @@ def Forward_Difference(L: float, DX: float, Tmax: float, por: float, DT: float, 
     number_nodes = int(L / DX)
     number_timesteps = int(Tmax / DT)
     Cnew = np.zeros([number_nodes, number_timesteps], dtype=np.float64)
+
 
     # set coefficients in in FD equations
     D = DH / por
