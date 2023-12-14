@@ -4,7 +4,7 @@ import nox
 @nox.session
 def tests(session: nox.Session) -> None:
     """
-    Run the test suite.
+    Run tests.
     """
-    session.install("-e.[test]")
-    session.run("pytest")
+    session.install(".[test]")
+    session.run("pytest", *session.posargs)
