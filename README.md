@@ -25,7 +25,7 @@ k - reaction rate coefficient
    [https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method]
 
 $$
-\theta \frac{C_{i}^{n} - C_{i}^{n-1}}{\Delta t} = 
+\theta \frac{C_{i}^{n} - C_{i}^{n-1}}{\Delta t} =
 $$
 
 $$

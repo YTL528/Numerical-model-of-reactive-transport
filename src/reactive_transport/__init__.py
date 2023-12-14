@@ -46,7 +46,7 @@ def Crank_Nicolson(
 
     for i in range(number_timesteps):
         Cnew[0, i] = Cf  # Boundary condition on the left
-        Cnew[number_nodes-1, i] = Cb  # Boundary condition on the right
+        Cnew[number_nodes - 1, i] = Cb  # Boundary condition on the right
 
         D = np.zeros(number_nodes, dtype=np.float64)
         E = np.zeros(number_nodes, dtype=np.float64)
@@ -110,9 +110,9 @@ def Analytical(
     Cnew_analytic = np.zeros(number_nodes, dtype=np.float64)
 
     Cnew_analytic[0] = Cf
-    Cnew_analytic[number_nodes-1] = Cb
+    Cnew_analytic[number_nodes - 1] = Cb
 
-    for k in np.arange(1, number_nodes-1, DX):
+    for k in np.arange(1, number_nodes - 1, DX):
         x = k * DX
         Cnew_analytic[k] = (Cf / 2) * (
             (math.erfc((x - v * DT) / (2 * math.sqrt(D * DT))))
