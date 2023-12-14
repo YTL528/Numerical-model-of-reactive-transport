@@ -21,6 +21,7 @@ $q_{x}$ - darcy velocity ($q_x=v_x \theta$, where $v_x$ is average groundwater v
 k - reaction rate coefficient
 
 2) Forward difference method
+
 $$
 \theta \frac{C_{i}^{n+1} - C_{i}^{n}}{\Delta t} = D_{x} \frac{C_{i+1}^{n+1} - 2 C_{i}^{n+1} + C_{i-1}^{n+1}}{\Delta x^2} - q_{x} \frac{C_{i}^{n+1} - C_{i-1}^{n+1}}{\Delta x} - k C_{i}^{n+1}
 $$
