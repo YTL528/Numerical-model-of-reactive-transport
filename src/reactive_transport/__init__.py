@@ -17,7 +17,7 @@ def simple_transport(grad, D, v, grad_c):
 
 
 def Crank_Nicolson(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> ndarray[np.float64]:
-     """
+    """
     Computes the numerical solution using the Crank-Nicolson method for reactive transport.
     
     Inputs:
@@ -30,33 +30,33 @@ def Crank_Nicolson(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: 
     - Cb (float): Concentration at the back boundary
     - q (float): Flow rate
     - DH (float): Dispersion coefficient
-
+    
     Returns:
     - ndarray[np.float64]: Concentration profile across the domain at different locations
     """
     N = int(L / DX) + 1  # needs to be changed to match Forward Difference formatting
-
-
+    
+    
     number_timesteps = int(Tmax / DT)
     Cnew = np.zeros([N, number_timesteps], dtype=np.float64)
-
-
+    
+    
     # set coefficients in in FD equations
     p = (DH * DT) / (DX**2)
     r = (q * DT) / (2 * DX)
-
+    
     a = p - r
     b = 2 * por + 2 * p
     c = p + r
-
+    
     for i in range(number_timesteps):
         Cnew[0, i] = Cf  # Boundary condition on the left
         Cnew[50, i] = Cb  # Boundary condition on the right
-
+    
         D = np.zeros(N + 1, dtype=np.float64)
         E = np.zeros(N + 1, dtype=np.float64)
         F = np.zeros(N + 1, dtype=np.float64)
-
+    
         for k in range(1, N - 1):
             if k == 1:
                 D[k] = (
@@ -74,14 +74,14 @@ def Crank_Nicolson(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: 
                 )
                 E[k] = a / (b - c * E[k - 1])
                 F[k] = (D[k] + c * F[k - 1]) / (b - c * E[k - 1])
-
+    
         for k in range(N - 2, 0, -1):
             Cnew[k, i] = F[k] + E[k] * Cnew[k + 1, i]
     return Cnew
 
 
 def Analytical(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> ndarray[np.float64]:
-     """
+    """
     Computes the analytical solution for reactive transport.
 
     Inputs:
@@ -122,7 +122,7 @@ def Analytical(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: floa
 
 
 def Forward_Difference(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> ndarray[np.float64]:
-     """
+    """
     Computes the numerical solution using the Forward Difference method for reactive transport.
 
     Inputs:
