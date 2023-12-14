@@ -36,13 +36,10 @@ def Crank_Nicolson(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: 
     """
     N = int(L / DX) + 1  # needs to be changed to match Forward Difference formatting
 
-    node_locations = np.arange(0, L + DX, DX)
     number_timesteps = int(Tmax / DT)
-    time_increments = np.arange(DT, Tmax + DT, DT)
     Cnew = np.zeros([N, number_timesteps], dtype=np.float64)
 
     # set coefficients in in FD equations
-    # D = DH / por
     p = (DH * DT) / (DX**2)
     r = (q * DT) / (2 * DX)
 
@@ -104,8 +101,6 @@ def Analytical(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: floa
     v = q / por
     D = DH / por
 
-    node_locations = np.arange(0, L + DX, DX)
-
     Cnew_analytic = np.zeros(N, dtype=np.float64)
 
     Cnew_analytic[0] = Cf
@@ -120,7 +115,7 @@ def Analytical(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: floa
                 * math.erfc((x + v * DT) / (2 * math.sqrt(D * DT)))
             )
         )
-    return Cnew_analytical
+    return Cnew_analytic
 
 
 def Forward_Difference(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> ndarray[np.float64]:
@@ -142,9 +137,7 @@ def Forward_Difference(L: float, DX: float, Tmax: float, por: float, DT: float, 
     - ndarray[np.float64]: Concentration profile across the domain at different locations
     """
     number_nodes = int(L / DX)
-    node_locations = np.arange(0, L + DX, DX)
     number_timesteps = int(Tmax / DT)
-    time_increments = np.arange(DT, Tmax + DT, DT)
     Cnew = np.zeros([number_nodes, number_timesteps], dtype=np.float64)
 
     # set coefficients in in FD equations
