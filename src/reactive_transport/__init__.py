@@ -32,10 +32,9 @@ def Crank_Nicolson(
     Returns:
     - NDArray[np.float64]: Concentration profile across the domain and across time
     """
-    N = int(L / DX) + 1  # needs to be changed to match Forward Difference formatting
-
+    number_nodes = int(L / DX)
     number_timesteps = int(Tmax / DT)
-    Cnew = np.zeros([N, number_timesteps], dtype=np.float64)
+    Cnew = np.zeros([number_nodes, number_timesteps], dtype=np.float64)
 
     # set coefficients in in FD equations
     p = (DH * DT) / (DX**2)
@@ -47,13 +46,13 @@ def Crank_Nicolson(
 
     for i in range(number_timesteps):
         Cnew[0, i] = Cf  # Boundary condition on the left
-        Cnew[50, i] = Cb  # Boundary condition on the right
+        Cnew[number_nodes-1, i] = Cb  # Boundary condition on the right
 
-        D = np.zeros(N + 1, dtype=np.float64)
-        E = np.zeros(N + 1, dtype=np.float64)
-        F = np.zeros(N + 1, dtype=np.float64)
+        D = np.zeros(number_nodes, dtype=np.float64)
+        E = np.zeros(number_nodes, dtype=np.float64)
+        F = np.zeros(number_nodes, dtype=np.float64)
 
-        for k in range(1, N - 1):
+        for k in range(1, number_nodes):
             if k == 1:
                 D[k] = (
                     a * Cnew[k + 1, i - 1]
@@ -71,7 +70,7 @@ def Crank_Nicolson(
                 E[k] = a / (b - c * E[k - 1])
                 F[k] = (D[k] + c * F[k - 1]) / (b - c * E[k - 1])
 
-        for k in range(N - 2, 0, -1):
+        for k in range(number_nodes - 2, 0, -1):
             Cnew[k, i] = F[k] + E[k] * Cnew[k + 1, i]
     return Cnew
 
@@ -104,17 +103,16 @@ def Analytical(
     Returns:
     - NDArray[np.float64]: Concentration profile across the domain at one time
     """
-    N = int(L / DX) + 1
-
+    number_nodes = int(L / DX)
     v = q / por
     D = DH / por
 
-    Cnew_analytic = np.zeros(N, dtype=np.float64)
+    Cnew_analytic = np.zeros(number_nodes, dtype=np.float64)
 
     Cnew_analytic[0] = Cf
-    Cnew_analytic[50] = Cb
+    Cnew_analytic[number_nodes-1] = Cb
 
-    for k in np.arange(1, N - 2, DX):
+    for k in np.arange(1, number_nodes-1, DX):
         x = k * DX
         Cnew_analytic[k] = (Cf / 2) * (
             (math.erfc((x - v * DT) / (2 * math.sqrt(D * DT))))
