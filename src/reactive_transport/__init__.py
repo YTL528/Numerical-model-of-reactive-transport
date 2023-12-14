@@ -16,7 +16,7 @@ def simple_transport(grad, D, v, grad_c):
     return dc_dt
 
 
-def Crank_Nicolson(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> ndarray[np.float64]:
+def Crank_Nicolson(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> NDArray[np.float64]:
     """
     Computes the numerical solution using the Crank-Nicolson method for reactive transport.
     
@@ -32,7 +32,7 @@ def Crank_Nicolson(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: 
     - DH (float): Dispersion coefficient
     
     Returns:
-    - ndarray[np.float64]: Concentration profile across the domain at different locations
+    - NDArray[np.float64]: Concentration profile across the domain at different locations
     """
     N = int(L / DX) + 1  # needs to be changed to match Forward Difference formatting
     
@@ -80,7 +80,7 @@ def Crank_Nicolson(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: 
     return Cnew
 
 
-def Analytical(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> ndarray[np.float64]:
+def Analytical(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> NDArray[np.float64]:
     """
     Computes the analytical solution for reactive transport.
 
@@ -96,7 +96,7 @@ def Analytical(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: floa
     - DH (float): Dispersion coefficient
 
     Returns:
-    - ndarray[np.float64]: Concentration profile across the domain at different locations
+    - NDArray[np.float64]: Concentration profile across the domain at different locations
     """
     N = int(L / DX) + 1
 
@@ -121,7 +121,7 @@ def Analytical(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: floa
 
 
 
-def Forward_Difference(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> ndarray[np.float64]:
+def Forward_Difference(L: float, DX: float, Tmax: float, por: float, DT: float, Cf: float, Cb: float, q: float, DH: float) -> NDArray[np.float64]:
     """
     Computes the numerical solution using the Forward Difference method for reactive transport.
 
@@ -137,7 +137,7 @@ def Forward_Difference(L: float, DX: float, Tmax: float, por: float, DT: float, 
     - DH (float): Dispersion coefficient
 
     Returns:
-    - ndarray[np.float64]: Concentration profile across the domain at different locations
+    - NDArray[np.float64]: Concentration profile across the domain at different locations
     """
     number_nodes = int(L / DX)
     number_timesteps = int(Tmax / DT)
