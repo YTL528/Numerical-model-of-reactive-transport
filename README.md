@@ -8,7 +8,6 @@ In environmental engineering, there is a need to characterize contaminant transp
 
 This project will be based on the following key equations:
 1) Advection-diffusion equation
-   [https://en.wikipedia.org/wiki/Convection%E2%80%93diffusion_equation]
 
 $$
 \theta \frac{\partial C}{\partial t}=\theta D_{x} \frac{\partial^2 C}{\partial x^2}-q_{x}\frac{\partial C}{\partial x} - kC
@@ -21,8 +20,16 @@ $D_{x}$ - dispersive coefficient
 $q_{x}$ - darcy velocity ($q_x=v_x \theta$, where $v_x$ is average groundwater velocity)
 k - reaction rate coefficient
 
-2) Crank-Nicolson method
-   [https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method]
+2) Forward difference method
+$$
+\theta \frac{C_{i}^{n+1} - C_{i}^{n}}{\Delta t} = D_{x} \frac{C_{i+1}^{n+1} - 2 C_{i}^{n+1} + C_{i-1}^{n+1}}{\Delta x^2} - q_{x} \frac{C_{i}^{n+1} - C_{i-1}^{n+1}}{\Delta x} - k C_{i}^{n+1}
+$$
+
+where,
+n - change in time
+i - change in space
+
+3) Crank-Nicolson method
 
 $$
 \theta \frac{C_{i}^{n} - C_{i}^{n-1}}{\Delta t} =
@@ -32,11 +39,7 @@ $$
 D_{x} \frac{C_{i+1}^{n} - 2 C_{i}^{n} + C_{i-1}^{n} + C_{i+1}^{n-1} - 2 C_{i}^{n-1} + C_{i-1}^{n-1}}{2 \Delta x^2} - q_{x} \frac{C_{i+1}^{n} - C_{i-1}^{n} + C_{i+1}^{n-1} - C_{i-1}^{n-1}}{4 \Delta x} - \frac{k}{2}(C_{i}^{n} + C_{i}^{n-1})
 $$
 
-where,
-n - change in time
-i - change in space
-
-[both equations modified from Numerical modeling of contaminant transformation in a permeable reactive barrier, A.Rahman and Anurag 2021. https://link.springer.com/chapter/10.1007/978-981-16-5547-0_43]
+[all equations modified from Numerical modeling of contaminant transformation in a permeable reactive barrier, A.Rahman and Anurag 2021. https://link.springer.com/chapter/10.1007/978-981-16-5547-0_43]
 
 **Implementation**
 
