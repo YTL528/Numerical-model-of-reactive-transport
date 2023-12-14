@@ -1,10 +1,4 @@
 # Numerical-model-of-reactive-transport
-**To-dolist (before Dec 8)**
-
-1. Fix the bugs in Crank-Nicolson.ipynb.
-2. Make three .ipynb files into functions and move them into src/.
-3. Add tests.
-
 
 **Objective**
 
@@ -43,11 +37,12 @@ i - change in space
 **Implementation**
 
 This project is implemented in Python with added tests and CI.
-* `src/_.py`:
+
+* `src/reactive_transport/__init__.py`:
 
 Python codes to implement the Crank-Nicolson method to solve the partial differential advection-diffusion equation.
 
-* `tests/`:
+* `tests/test_main.py`:
 
 Tests to verify that the written PDE solver works.
 
@@ -67,14 +62,7 @@ Contains Python code defining sessions for the Nox automation tool. In this case
 
 Defines the continuous integration (CI) workflow using GitHub Actions. It has two jobs: formats and tests. The formats job checks for code formatting issues using pre-commit, and the tests job runs tests using different Python versions specified in a matrix.
 
-* `Analytical Solution.ipynb`:
 
-The analytical solution for the Advection-diffusion equation coded in Python, which helps to get accurate results.
+* `Example_Workflow.ipynb`:
 
-* `Forward Difference Code.ipynb`:
-
-The Forward Difference method used for solving the Advection-diffusion equation and coded in Python.
-
-* `Crank-Nicolson.ipynb`:
-
-The Crank-Nicolson method used for solving the Advection-diffusion equation and coded in Python.
+Example application and validation of Foreward Difference and Crank-Nicolson methods compared to analytical method of determining contaminent transport.
