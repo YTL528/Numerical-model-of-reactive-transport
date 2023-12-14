@@ -25,7 +25,8 @@ k - reaction rate coefficient
    [https://en.wikipedia.org/wiki/Crank%E2%80%93Nicolson_method]
 
 $$
-\theta \frac{C_{i}^{n} - C_{i}^{n-1}}{\Delta t} = D_{x} \frac{C_{i+1}^{n} - 2 C_{i}^{n} + C_{i-1}^{n} + C_{i+1}^{n-1} - 2 C_{i}^{n-1} + C_{i-1}^{n-1}}{2 \Delta x^2} - q_{x} \frac{C_{i+1}^{n} - C_{i-1}^{n} + C_{i+1}^{n-1} - C_{i-1}^{n-1}}{4 \Delta x} - \frac{k}{2}(C_{i}^{n} + C_{i}^{n-1})
+\theta \frac{C_{i}^{n} - C_{i}^{n-1}}{\Delta t} = 
+D_{x} \frac{C_{i+1}^{n} - 2 C_{i}^{n} + C_{i-1}^{n} + C_{i+1}^{n-1} - 2 C_{i}^{n-1} + C_{i-1}^{n-1}}{2 \Delta x^2} - q_{x} \frac{C_{i+1}^{n} - C_{i-1}^{n} + C_{i+1}^{n-1} - C_{i-1}^{n-1}}{4 \Delta x} - \frac{k}{2}(C_{i}^{n} + C_{i}^{n-1})
 $$
 
 where,
