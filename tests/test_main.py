@@ -66,7 +66,7 @@ def test_extreme_cases():
 
 
 def test_close_results():
-    # Test that all three functions return the same size and approx. value for same inputs
+    # Test that all three functions return approx. values with the same size
     params = dict(
         L=100.0, DX=1.0, Tmax=5.0, por=0.3, DT=0.05, Cf=100.0, Cb=0.0, q=1.5, DH=2.5
     )
