@@ -52,7 +52,7 @@ def Crank_Nicolson(
         E = np.zeros(number_nodes, dtype=np.float64)
         F = np.zeros(number_nodes, dtype=np.float64)
 
-        for k in range(1, number_nodes):
+        for k in range(1, number_nodes - 1):
             if k == 1:
                 D[k] = (
                     a * Cnew[k + 1, i - 1]
@@ -103,6 +103,7 @@ def Analytical(
     Returns:
     - NDArray[np.float64]: Concentration profile across the domain at one time
     """
+    DT = Tmax - DT #set time to final time step to compare to other methods
     number_nodes = int(L / DX)
     v = q / por
     D = DH / por
@@ -112,7 +113,7 @@ def Analytical(
     Cnew_analytic[0] = Cf
     Cnew_analytic[number_nodes - 1] = Cb
 
-    for k in np.arange(1, number_nodes - 1, DX):
+    for k in np.arange(1, number_nodes - 1):
         x = k * DX
         Cnew_analytic[k] = (Cf / 2) * (
             (math.erfc((x - v * DT) / (2 * math.sqrt(D * DT))))
@@ -169,7 +170,7 @@ def Forward_Difference(
         Cnew[0, i] = Cf
         Cnew[number_nodes - 1, i] = Cb
 
-        for k in np.arange(1, number_nodes - 2, DX):
+        for k in np.arange(1, number_nodes - 2):
             Cnew[k, i] = (
                 a * Cnew[k + 1, i - 1] + b * Cnew[k, i - 1] + c * Cnew[k - 1, i - 1]
             )
