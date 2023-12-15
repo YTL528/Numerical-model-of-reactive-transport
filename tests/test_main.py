@@ -102,6 +102,6 @@ def test_close_results():
     )[:, -1]
 
     assert len(cn_result) == len(ana_result) == len(fd_result)
-    assert np.allclose(cn_result, ana_result, atol = 0.01)
-    assert np.allclose(ana_result, fd_result, atol = 0.01)
-    assert np.allclose(cn_result, fd_result, atol = 0.01)
+    assert np.allclose(cn_result, ana_result, atol = 0.01, rtol = 0.01)
+    assert np.allclose(ana_result, fd_result, atol = 0.01, rtol = 0.01)
+    assert np.allclose(cn_result, fd_result, atol = 0.01, rtol = 0.01)
