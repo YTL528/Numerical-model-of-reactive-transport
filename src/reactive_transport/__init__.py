@@ -52,7 +52,7 @@ def Crank_Nicolson(
         E = np.zeros(number_nodes, dtype=np.float64)
         F = np.zeros(number_nodes, dtype=np.float64)
 
-        for k in range(1, number_nodes):
+        for k in range(1, number_nodes - 1):
             if k == 1:
                 D[k] = (
                     a * Cnew[k + 1, i - 1]
