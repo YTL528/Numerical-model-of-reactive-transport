@@ -98,6 +98,6 @@ def test_close_results():
     fd_result = Forward_Difference(**params)[:, -1]
 
     assert len(cn_result) == len(ana_result) == len(fd_result)
-    assert np.allclose(cn_result, ana_result, atol = 1.0 rtol = 0.1)
+    assert np.allclose(cn_result, ana_result, atol = 1.0, rtol = 0.1)
     assert np.allclose(ana_result, fd_result, atol = 1.0, rtol = 0.1)
     assert np.allclose(cn_result, fd_result, atol = 1.0, rtol = 0.1)
