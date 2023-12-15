@@ -53,40 +53,40 @@ def test_extreme_cases():
         Tmax=10.0,
         por=0.3,
         DT=0.05,
-        Cf=0,
-        Cb=0,
+        Cf=0.0,
+        Cb=0.0,
         q=1.5,
         DH=2.5,
     )[:, -1]
-    assert np.allclose(cn_result, constant_c)
+    assert np.allclose(cn_result, 0.0)
 
-    # Test extreme values for Analytical function when Cf = Cb = c
+    # Test extreme values for Analytical function when Cf = Cb = 0
     ana_result = Analytical(
         L=100.0,
         DX=1.0,
         Tmax=10.0,
         por=0.3,
         DT=0.05,
-        Cf=0,
-        Cb=0,
+        Cf=0.0,
+        Cb=0.0,
         q=1.5,
         DH=2.5
     )
-    assert np.allclose(ana_result, constant_c)
+    assert np.allclose(ana_result, 0.0)
 
-    # Test extreme values for Forward_Difference function when Cf = Cb = c
+    # Test extreme values for Forward_Difference function when Cf = Cb = 0
     fd_result = Forward_Difference(
         L=100.0,
         DX=1.0,
         Tmax=10.0,
         por=0.3,
         DT=0.05,
-        Cf=0,
-        Cb=0,
+        Cf=0.0,
+        Cb=0.0,
         q=1.5,
         DH=2.5
     )[:, -1]
-    assert np.allclose(fd_result, constant_c)
+    assert np.allclose(fd_result, 0.0)
 
 
 def test_close_results():
