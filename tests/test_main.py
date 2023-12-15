@@ -48,56 +48,34 @@ def test_values_within_range():
 def test_extreme_cases():
     # Test extreme values for Crank_Nicolson function when Cf = Cb = 0
     cn_result = Crank_Nicolson(
-        L=100.0,
-        DX=1.0,
-        Tmax=10.0,
-        por=0.3,
-        DT=0.05,
-        Cf=0.0,
-        Cb=0.0,
-        q=1.5,
-        DH=2.5,
+        L=100.0, DX=1.0, Tmax=10.0, por=0.3, DT=0.05, Cf=0.0, Cb=0.0, q=1.5, DH=2.5
     )[:, -1]
     assert np.allclose(cn_result, 0.0)
 
     # Test extreme values for Analytical function when Cf = Cb = 0
     ana_result = Analytical(
-        L=100.0,
-        DX=1.0,
-        Tmax=10.0,
-        por=0.3,
-        DT=0.05,
-        Cf=0.0,
-        Cb=0.0,
-        q=1.5,
-        DH=2.5
+        L=100.0, DX=1.0, Tmax=10.0, por=0.3, DT=0.05, Cf=0.0, Cb=0.0, q=1.5, DH=2.5
     )
     assert np.allclose(ana_result, 0.0)
 
     # Test extreme values for Forward_Difference function when Cf = Cb = 0
     fd_result = Forward_Difference(
-        L=100.0,
-        DX=1.0,
-        Tmax=10.0,
-        por=0.3,
-        DT=0.05,
-        Cf=0.0,
-        Cb=0.0,
-        q=1.5,
-        DH=2.5
+        L=100.0, DX=1.0, Tmax=10.0, por=0.3, DT=0.05, Cf=0.0, Cb=0.0, q=1.5, DH=2.5
     )[:, -1]
     assert np.allclose(fd_result, 0.0)
 
 
 def test_close_results():
     # Test that all three functions return the same size and approx. value for same inputs
-    params = dict(L=100.0, DX=1.0, Tmax=5.0, por=0.3, DT=0.05, Cf=100.0, Cb=0.0, q=1.5, DH=2.5)
+    params = dict(
+        L=100.0, DX=1.0, Tmax=5.0, por=0.3, DT=0.05, Cf=100.0, Cb=0.0, q=1.5, DH=2.5
+    )
 
     cn_result = Crank_Nicolson(**params)[:, -1]
     ana_result = Analytical(**params)
     fd_result = Forward_Difference(**params)[:, -1]
 
     assert len(cn_result) == len(ana_result) == len(fd_result)
-    assert np.allclose(cn_result, ana_result, atol = 1.0, rtol = 0.1)
-    assert np.allclose(ana_result, fd_result, atol = 1.0, rtol = 0.1)
-    assert np.allclose(cn_result, fd_result, atol = 1.0, rtol = 0.1)
+    assert np.allclose(cn_result, ana_result, atol=1.0, rtol=0.1)
+    assert np.allclose(ana_result, fd_result, atol=1.0, rtol=0.1)
+    assert np.allclose(cn_result, fd_result, atol=1.0, rtol=0.1)
