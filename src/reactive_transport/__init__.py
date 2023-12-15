@@ -103,7 +103,7 @@ def Analytical(
     Returns:
     - NDArray[np.float64]: Concentration profile across the domain at one time
     """
-    DT = Tmax - DT #set time to final time step to compare to other methods
+    DT = Tmax - DT  # set time to final time step to compare to other methods
     number_nodes = int(L / DX)
     v = q / por
     D = DH / por
